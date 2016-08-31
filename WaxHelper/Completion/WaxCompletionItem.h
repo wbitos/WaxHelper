@@ -17,6 +17,7 @@ const static NSString *kJPCompeletionText = @"kJPCTxt";
 const static NSString *kJPCompeletionKind = @"kJPCKind";
 
 @interface WaxCompletionItem : IDEIndexCompletionItem
+@property (nonatomic, strong) NSString *prefix;
 
 - (instancetype)initWithDictinary:(NSDictionary *)dict;
 

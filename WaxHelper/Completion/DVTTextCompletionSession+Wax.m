@@ -42,6 +42,7 @@
 
         for (WaxCompletionItem * compitem in self.allCompletions) {
             if ([compitem.lowercaseName hasPrefix:comparePrefix]) {
+                compitem.prefix = [arg1 substringToIndex:[arg1 length] - [comparePrefix length]];
                 [arr addObject:compitem];
             }
         }
