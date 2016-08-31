@@ -1,5 +1,5 @@
 //
-//  JPObjcIndex.h
+//  WaxObjcIndex.h
 //  Wax
 //
 //  Created by bang on 4/16/16.
@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 @class IDEWorkspace;
 
-@interface JPObjcIndex : NSObject
+@interface WaxObjcIndex : NSObject
 - (instancetype)initWithWorkspace:(IDEWorkspace *)workspace;
 - (NSArray *)methodCompletionItemsWithClasses:(NSArray *)classes;
 - (NSArray *)protocolCompletionItems;

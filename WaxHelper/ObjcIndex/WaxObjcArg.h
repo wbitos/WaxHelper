@@ -1,5 +1,5 @@
 //
-//  JPObjcArg.h
+//  WaxObjcArg.h
 //  Wax
 //
 //  Created by louis on 4/16/16.
@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface JPObjcArg : NSObject
+@interface WaxObjcArg : NSObject
 
 @property (nonatomic, retain) NSString * selector;
 @property (nonatomic, retain) NSString * argName;

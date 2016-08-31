@@ -1,25 +1,25 @@
 //
-//  JPObjcFile.m
+//  WaxObjcFile.m
 //  Wax
 //
 //  Created by louis on 4/16/16.
 //  Copyright © 2016 louis. All rights reserved.
 //
 
-#import "JPObjcFile.h"
+#import "WaxObjcFile.h"
 #import "objcLex.h"
 #import "objcParser.h"
-#import "JPObjcProtocol.h"
-#import "JPObjcImport.h"
-#import "JPObjcClass.h"
+#import "WaxObjcProtocol.h"
+#import "WaxObjcImport.h"
+#import "WaxObjcClass.h"
 
-@implementation JPObjcFile {
+@implementation WaxObjcFile {
     NSMutableArray *_imports;
     NSMutableArray *_classes;
     NSMutableArray *_protocols;
 }
 
-+ (JPObjcFile *)parseFile:(NSString *)path
++ (WaxObjcFile *)parseFile:(NSString *)path
 {
     @try {
         NSData *sourceData = [NSData dataWithContentsOfFile:path];
@@ -32,7 +32,7 @@
         
         fssym.parse(&lex);
         
-        JPObjcFile *objcFile = [[JPObjcFile alloc] initWithParseResult:&fssym];
+        WaxObjcFile *objcFile = [[WaxObjcFile alloc] initWithParseResult:&fssym];
         objcFile.parseDate = [NSDate date];
         objcFile.filePath = path;
         
@@ -54,21 +54,21 @@
         _imports = [[NSMutableArray alloc] initWithCapacity:fs->imports.size()];
         for(int idx = 0; idx < fs->imports.size(); ++idx){
             ImportSymbol *imps = fs->imports[idx];
-            JPObjcImport *objcImport = [[JPObjcImport alloc] initWithParseResult:imps];
+            WaxObjcImport *objcImport = [[WaxObjcImport alloc] initWithParseResult:imps];
             [_imports addObject:objcImport];
         }
         
         _classes = [[NSMutableArray alloc] initWithCapacity:fs->interfaces.size()];
         for(int idx = 0; idx < fs->interfaces.size(); ++idx){
             InterfaceSymbol *itfs = fs->interfaces[idx];
-            JPObjcClass *objcCls = [[JPObjcClass alloc] initWithParseResult:itfs];
+            WaxObjcClass *objcCls = [[WaxObjcClass alloc] initWithParseResult:itfs];
             [_classes addObject:objcCls];
         }
         
         _protocols = [[NSMutableArray alloc] initWithCapacity:fs->protocols.size()];
         for(int idx = 0; idx < fs->protocols.size(); ++idx){
             ProtocolSymbol *protos = fs->protocols[idx];
-            JPObjcProtocol *objcProtocol = [[JPObjcProtocol alloc] initWithParseResult:protos];
+            WaxObjcProtocol *objcProtocol = [[WaxObjcProtocol alloc] initWithParseResult:protos];
             [_protocols addObject:objcProtocol];
         }
         

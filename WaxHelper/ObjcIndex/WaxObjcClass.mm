@@ -1,17 +1,17 @@
 //
-//  JPObjcClass.m
+//  WaxObjcClass.m
 //  Wax
 //
 //  Created by louis on 4/16/16.
 //  Copyright © 2016 louis. All rights reserved.
 //
 
-#import "JPObjcClass.h"
+#import "WaxObjcClass.h"
 #import "objcParser.h"
-#import "JPObjcMethod.h"
-#import "JPObjcArg.h"
+#import "WaxObjcMethod.h"
+#import "WaxObjcArg.h"
 
-@implementation JPObjcClass {
+@implementation WaxObjcClass {
     NSMutableArray *_methods;
     BOOL _isCategory;
     NSString *_cateName;
@@ -29,7 +29,7 @@
         _superClsName = [NSString stringWithUTF8String:itfsym->superClsName.c_str()];
         for (int idx = 0; idx < itfsym->methods.size(); ++idx) {
             MethodSymbol *msym = itfsym->methods[idx];
-            JPObjcMethod *objcMethod = [[JPObjcMethod alloc] initWithParseResult:msym];
+            WaxObjcMethod *objcMethod = [[WaxObjcMethod alloc] initWithParseResult:msym];
             objcMethod.className = _clsName;
             [_methods addObject:objcMethod];
         }
@@ -38,7 +38,7 @@
             PropertySymbol *propsym = itfsym->properties[idx];
             
             //getter
-            JPObjcMethod *objcMethodGetter = [[JPObjcMethod alloc] init];
+            WaxObjcMethod *objcMethodGetter = [[WaxObjcMethod alloc] init];
             objcMethodGetter.methodName = [NSString stringWithUTF8String:propsym->propertyName.c_str()];
             objcMethodGetter.returnType = [NSString stringWithUTF8String:propsym->propertyType.c_str()];
             objcMethodGetter.className = _clsName;
@@ -46,7 +46,7 @@
             
             if (![self isPropertyReadOnly:propsym]) {
                 //setter
-                JPObjcMethod *objcMethodSetter = [[JPObjcMethod alloc] init];
+                WaxObjcMethod *objcMethodSetter = [[WaxObjcMethod alloc] init];
                 objcMethodSetter.methodName = [NSString stringWithFormat:@"set%@",[NSString stringWithUTF8String:propsym->propertyName.c_str()]];
                 if (objcMethodSetter.methodName.length > 3) {
                     NSString *c = [objcMethodSetter.methodName substringWithRange:NSMakeRange(3, 1)];
@@ -55,7 +55,7 @@
                 objcMethodSetter.returnType = @"void";
                 
                 
-                JPObjcArg *objcArg = [[JPObjcArg alloc] init];
+                WaxObjcArg *objcArg = [[WaxObjcArg alloc] init];
                 objcArg.argName = [NSString stringWithUTF8String:propsym->propertyName.c_str()];
                 objcArg.selector = objcMethodSetter.methodName;
                 objcArg.argType = objcMethodGetter.returnType;

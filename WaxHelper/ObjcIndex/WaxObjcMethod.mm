@@ -1,19 +1,19 @@
 //
-//  JPObjcMethod.m
+//  WaxObjcMethod.m
 //  Wax
 //
 //  Created by louis on 4/16/16.
 //  Copyright © 2016 louis. All rights reserved.
 //
 
-#import "JPObjcMethod.h"
+#import "WaxObjcMethod.h"
 #import "objcParser.h"
-#import "JPObjcArg.h"
+#import "WaxObjcArg.h"
 #import "WaxCompletionItem.h"
 #import "DVTSourceCodeSymbolKind.h"
 #import "NSString+Additional.h"
 
-@implementation JPObjcMethod {
+@implementation WaxObjcMethod {
     WaxCompletionItem *_completionItem;
 }
 
@@ -27,7 +27,7 @@
         _args = [[NSMutableArray alloc] initWithCapacity:msym->args.size()];
         for (int i = 0; i < msym->args.size(); ++i){
             ArgSymbol *argsym = msym->args[i];
-            JPObjcArg *objcArg = [[JPObjcArg alloc] initWithParseResult:argsym];
+            WaxObjcArg *objcArg = [[WaxObjcArg alloc] initWithParseResult:argsym];
             [_args addObject:objcArg];
         }
     }
@@ -79,7 +79,7 @@
         if (i != 0) {
             [displayText appendString:@", "];
         }
-        JPObjcArg *arg = _args[i];
+        WaxObjcArg *arg = _args[i];
         if ([arg.argName isEqualToString:@"..."]) {
             [displayText appendString:@"..."];
         }else{
@@ -104,7 +104,7 @@
         if (i != 0) {
             [compString appendString:@", "];
         }
-        JPObjcArg *arg = _args[i];
+        WaxObjcArg *arg = _args[i];
         if ([arg.argName isEqualToString:@"..."]) {
             [compString appendString:@"<#...#\>"];
         }else{

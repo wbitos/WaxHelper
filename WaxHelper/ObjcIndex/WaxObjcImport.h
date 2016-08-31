@@ -1,5 +1,5 @@
 //
-//  JPObjcImport.h
+//  WaxObjcImport.h
 //  Wax
 //
 //  Created by louis on 4/16/16.
@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface JPObjcImport : NSObject
+@interface WaxObjcImport : NSObject
 @property (nonatomic, assign) BOOL isSys;
 @property (nonatomic, strong) NSString *header;
 -(instancetype)initWithParseResult:(void *)result;

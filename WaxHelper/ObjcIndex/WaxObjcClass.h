@@ -1,5 +1,5 @@
 //
-//  JPObjcClass.h
+//  WaxObjcClass.h
 //  Wax
 //
 //  Created by louis on 4/16/16.
@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface JPObjcClass : NSObject
+@interface WaxObjcClass : NSObject
 @property (nonatomic, strong) NSArray *methods;  //include property method
 @property (nonatomic, assign) BOOL isCategory;
 @property (nonatomic, strong) NSString *clsName;

@@ -10,7 +10,7 @@
 #import "IDEWorkspace.h"
 #import "IDEWorkspace+Wax.h"
 #import "WaxFile.h"
-#import "JPObjcIndex.h"
+#import "WaxObjcIndex.h"
 #import "WaxCompletionItem.h"
 #import "DVTSourceCodeSymbolKind.h"
 

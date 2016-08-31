@@ -1,5 +1,5 @@
 //
-//  JPObjcProtocol.h
+//  WaxObjcProtocol.h
 //  Wax
 //
 //  Created by louis on 4/16/16.
@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface JPObjcProtocol : NSObject
+@interface WaxObjcProtocol : NSObject
 @property (nonatomic, strong) NSString *protocolName;
 - (instancetype)initWithParseResult:(void *)result;
 - (NSArray *)methodCompletionItems;

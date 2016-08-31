@@ -1,17 +1,17 @@
 //
-//  JPObjcProtocol.m
+//  WaxObjcProtocol.m
 //  Wax
 //
 //  Created by louis on 4/16/16.
 //  Copyright © 2016 louis. All rights reserved.
 //
 
-#import "JPObjcProtocol.h"
+#import "WaxObjcProtocol.h"
 #import "objcParser.h"
-#import "JPObjcMethod.h"
-#import "JPObjcArg.h"
+#import "WaxObjcMethod.h"
+#import "WaxObjcArg.h"
 
-@implementation JPObjcProtocol {
+@implementation WaxObjcProtocol {
     NSMutableArray *_methods;  //include property method
 }
 
@@ -24,7 +24,7 @@
         
         for (int idx = 0; idx < protosym->methods.size(); ++idx) {
             MethodSymbol *msym = protosym->methods[idx];
-            JPObjcMethod *objcMethod = [[JPObjcMethod alloc] initWithParseResult:msym];
+            WaxObjcMethod *objcMethod = [[WaxObjcMethod alloc] initWithParseResult:msym];
             objcMethod.className = _protocolName;
             [_methods addObject:objcMethod];
         }
@@ -33,18 +33,18 @@
             PropertySymbol *propsym = protosym->properties[idx];
             
             //getter
-            JPObjcMethod *objcMethodGetter = [[JPObjcMethod alloc] init];
+            WaxObjcMethod *objcMethodGetter = [[WaxObjcMethod alloc] init];
             objcMethodGetter.methodName = [NSString stringWithUTF8String:propsym->propertyName.c_str()];
             objcMethodGetter.returnType = [NSString stringWithUTF8String:propsym->propertyType.c_str()];
             objcMethodGetter.className = _protocolName;
             [_methods addObject:objcMethodGetter];
             if (![self isPropertyReadOnly:propsym]) {
                 //setter
-                JPObjcMethod *objcMethodSetter = [[JPObjcMethod alloc] init];
+                WaxObjcMethod *objcMethodSetter = [[WaxObjcMethod alloc] init];
                 objcMethodSetter.methodName = [NSString stringWithFormat:@"set%@",[NSString stringWithUTF8String:propsym->propertyName.c_str()]];
                 objcMethodSetter.returnType = @"void";
                 
-                JPObjcArg *argSym = [[JPObjcArg alloc] init];
+                WaxObjcArg *argSym = [[WaxObjcArg alloc] init];
                 argSym.argName = [[NSString stringWithUTF8String:propsym->propertyName.c_str()] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
                 argSym.selector = objcMethodSetter.methodName;
                 argSym.argType = [objcMethodGetter.returnType stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
@@ -70,7 +70,7 @@
 
 - (NSArray *)methodCompletionItems {
     NSMutableArray *items = [[NSMutableArray alloc] init];
-    for (JPObjcMethod *method in _methods) {
+    for (WaxObjcMethod *method in _methods) {
         [items addObject:method.completionItem];
     }
     return items;

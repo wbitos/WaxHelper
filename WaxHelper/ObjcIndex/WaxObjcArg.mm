@@ -1,16 +1,16 @@
 //
-//  JPObjcArg.m
+//  WaxObjcArg.m
 //  Wax
 //
 //  Created by louis on 4/16/16.
 //  Copyright © 2016 louis. All rights reserved.
 //
 
-#import "JPObjcArg.h"
+#import "WaxObjcArg.h"
 #import "objcParser.h"
 #import "NSString+Additional.h"
 
-@implementation JPObjcArg 
+@implementation WaxObjcArg 
 
 - (instancetype)initWithParseResult:(void *)result
 {

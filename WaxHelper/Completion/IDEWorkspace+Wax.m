@@ -16,10 +16,10 @@
 
 @implementation IDEWorkspace (Wax)
 
-- (JPObjcIndex *)objcIndex {
-    JPObjcIndex *objcIndex = objc_getAssociatedObject(self, @"_objcIndex");
+- (WaxObjcIndex *)objcIndex {
+    WaxObjcIndex *objcIndex = objc_getAssociatedObject(self, @"_objcIndex");
     if (!objcIndex) {
-        objcIndex = [[JPObjcIndex alloc] initWithWorkspace:self];
+        objcIndex = [[WaxObjcIndex alloc] initWithWorkspace:self];
         objc_setAssociatedObject(self, @"_objcIndex", objcIndex, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
     }
     return objcIndex;
@@ -52,7 +52,7 @@
 }
 
 - (NSArray *)defaultScanHeaderDirs {
-    NSString * fpath = [[NSBundle bundleForClass:[JPObjcIndex class]] pathForResource:@"defScanFramwork" ofType:@"plist"];
+    NSString * fpath = [[NSBundle bundleForClass:[WaxObjcIndex class]] pathForResource:@"defScanFramwork" ofType:@"plist"];
     NSDictionary *dc = [NSDictionary dictionaryWithContentsOfFile:fpath];
     
     NSMutableArray * dirs = [[NSMutableArray alloc] init];

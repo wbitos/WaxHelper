@@ -1,5 +1,5 @@
 //
-//  JPObjcMethod.h
+//  WaxObjcMethod.h
 //  Wax
 //
 //  Created by louis on 4/16/16.
@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "WaxCompletionItem.h"
 
-@interface JPObjcMethod : NSObject
+@interface WaxObjcMethod : NSObject
 
 @property (nonatomic, strong) NSMutableArray *args;
 @property (nonatomic, strong) NSString *methodName;

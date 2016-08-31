@@ -1,5 +1,5 @@
 //
-//  JPObjcFile.h
+//  WaxObjcFile.h
 //  Wax
 //
 //  Created by louis on 4/16/16.
@@ -8,11 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
-@interface JPObjcFile : NSObject
+@interface WaxObjcFile : NSObject
 @property (nonatomic, strong) NSDate * parseDate;
 @property (nonatomic, strong) NSString * filePath;
 @property (nonatomic, strong) NSArray *classes;
 @property (nonatomic, strong) NSArray * protocols;
 @property (nonatomic, strong) NSArray * imports;
-+ (JPObjcFile *)parseFile:(NSString *)path;
++ (WaxObjcFile *)parseFile:(NSString *)path;
 @end

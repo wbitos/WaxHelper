@@ -1,15 +1,15 @@
 //
-//  JPObjcImport.m
+//  WaxObjcImport.m
 //  Wax
 //
 //  Created by louis on 4/16/16.
 //  Copyright © 2016 louis. All rights reserved.
 //
 
-#import "JPObjcImport.h"
+#import "WaxObjcImport.h"
 #import "objcParser.h"
 
-@implementation JPObjcImport 
+@implementation WaxObjcImport 
 
 -(instancetype)initWithParseResult:(void *)result{
     if (self = [super init]) {

@@ -9,14 +9,14 @@
 #import <Foundation/Foundation.h>
 #import "IDEWorkspace.h"
 #import "WaxIndex.h"
-#import "JPObjcIndex.h"
+#import "WaxObjcIndex.h"
 #import "PBXProject.h"
 
 @interface IDEWorkspace (Wax)
 
 - (WaxIndex *)waxIndex;
 
-- (JPObjcIndex *)objcIndex;
+- (WaxObjcIndex *)objcIndex;
 
 - (NSString *)currentProjectFolder;
 

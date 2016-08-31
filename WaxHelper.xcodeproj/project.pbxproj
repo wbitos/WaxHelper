@@ -34,13 +34,13 @@
 		5BA10C4D1D75434A00824CB4 /* WaxFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA10C4C1D75434A00824CB4 /* WaxFile.m */; };
 		5BA10C511D7543C500824CB4 /* WaxClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA10C501D7543C500824CB4 /* WaxClass.m */; };
 		5BA10C541D7543D600824CB4 /* WaxMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA10C531D7543D600824CB4 /* WaxMethod.m */; };
-		5BA10C841D7545F000824CB4 /* JPObjcArg.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5BA10C721D7545F000824CB4 /* JPObjcArg.mm */; };
-		5BA10C851D7545F000824CB4 /* JPObjcClass.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5BA10C741D7545F000824CB4 /* JPObjcClass.mm */; };
-		5BA10C861D7545F000824CB4 /* JPObjcFile.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5BA10C761D7545F000824CB4 /* JPObjcFile.mm */; };
-		5BA10C871D7545F000824CB4 /* JPObjcImport.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5BA10C781D7545F000824CB4 /* JPObjcImport.mm */; };
-		5BA10C881D7545F000824CB4 /* JPObjcIndex.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA10C7A1D7545F000824CB4 /* JPObjcIndex.m */; };
-		5BA10C891D7545F000824CB4 /* JPObjcMethod.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5BA10C7C1D7545F000824CB4 /* JPObjcMethod.mm */; };
-		5BA10C8A1D7545F000824CB4 /* JPObjcProtocol.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5BA10C7E1D7545F000824CB4 /* JPObjcProtocol.mm */; };
+		5BA10C841D7545F000824CB4 /* WaxObjcArg.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5BA10C721D7545F000824CB4 /* WaxObjcArg.mm */; };
+		5BA10C851D7545F000824CB4 /* WaxObjcClass.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5BA10C741D7545F000824CB4 /* WaxObjcClass.mm */; };
+		5BA10C861D7545F000824CB4 /* WaxObjcFile.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5BA10C761D7545F000824CB4 /* WaxObjcFile.mm */; };
+		5BA10C871D7545F000824CB4 /* WaxObjcImport.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5BA10C781D7545F000824CB4 /* WaxObjcImport.mm */; };
+		5BA10C881D7545F000824CB4 /* WaxObjcIndex.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA10C7A1D7545F000824CB4 /* WaxObjcIndex.m */; };
+		5BA10C891D7545F000824CB4 /* WaxObjcMethod.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5BA10C7C1D7545F000824CB4 /* WaxObjcMethod.mm */; };
+		5BA10C8A1D7545F000824CB4 /* WaxObjcProtocol.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5BA10C7E1D7545F000824CB4 /* WaxObjcProtocol.mm */; };
 		5BA10C8B1D7545F000824CB4 /* objcLex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5BA10C801D7545F000824CB4 /* objcLex.cpp */; };
 		5BA10C8C1D7545F000824CB4 /* objcParser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5BA10C821D7545F000824CB4 /* objcParser.cpp */; };
 		5BA10C8F1D75467200824CB4 /* WaxCompletionItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA10C8E1D75467200824CB4 /* WaxCompletionItem.m */; };
@@ -212,20 +212,20 @@
 		5BA10C501D7543C500824CB4 /* WaxClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WaxClass.m; sourceTree = "<group>"; };
 		5BA10C521D7543D600824CB4 /* WaxMethod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaxMethod.h; sourceTree = "<group>"; };
 		5BA10C531D7543D600824CB4 /* WaxMethod.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WaxMethod.m; sourceTree = "<group>"; };
-		5BA10C711D7545F000824CB4 /* JPObjcArg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPObjcArg.h; sourceTree = "<group>"; };
-		5BA10C721D7545F000824CB4 /* JPObjcArg.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = JPObjcArg.mm; sourceTree = "<group>"; };
-		5BA10C731D7545F000824CB4 /* JPObjcClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPObjcClass.h; sourceTree = "<group>"; };
-		5BA10C741D7545F000824CB4 /* JPObjcClass.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = JPObjcClass.mm; sourceTree = "<group>"; };
-		5BA10C751D7545F000824CB4 /* JPObjcFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPObjcFile.h; sourceTree = "<group>"; };
-		5BA10C761D7545F000824CB4 /* JPObjcFile.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = JPObjcFile.mm; sourceTree = "<group>"; };
-		5BA10C771D7545F000824CB4 /* JPObjcImport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPObjcImport.h; sourceTree = "<group>"; };
-		5BA10C781D7545F000824CB4 /* JPObjcImport.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = JPObjcImport.mm; sourceTree = "<group>"; };
-		5BA10C791D7545F000824CB4 /* JPObjcIndex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPObjcIndex.h; sourceTree = "<group>"; };
-		5BA10C7A1D7545F000824CB4 /* JPObjcIndex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JPObjcIndex.m; sourceTree = "<group>"; };
-		5BA10C7B1D7545F000824CB4 /* JPObjcMethod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPObjcMethod.h; sourceTree = "<group>"; };
-		5BA10C7C1D7545F000824CB4 /* JPObjcMethod.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = JPObjcMethod.mm; sourceTree = "<group>"; };
-		5BA10C7D1D7545F000824CB4 /* JPObjcProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPObjcProtocol.h; sourceTree = "<group>"; };
-		5BA10C7E1D7545F000824CB4 /* JPObjcProtocol.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = JPObjcProtocol.mm; sourceTree = "<group>"; };
+		5BA10C711D7545F000824CB4 /* WaxObjcArg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaxObjcArg.h; sourceTree = "<group>"; };
+		5BA10C721D7545F000824CB4 /* WaxObjcArg.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = WaxObjcArg.mm; sourceTree = "<group>"; };
+		5BA10C731D7545F000824CB4 /* WaxObjcClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaxObjcClass.h; sourceTree = "<group>"; };
+		5BA10C741D7545F000824CB4 /* WaxObjcClass.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = WaxObjcClass.mm; sourceTree = "<group>"; };
+		5BA10C751D7545F000824CB4 /* WaxObjcFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaxObjcFile.h; sourceTree = "<group>"; };
+		5BA10C761D7545F000824CB4 /* WaxObjcFile.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = WaxObjcFile.mm; sourceTree = "<group>"; };
+		5BA10C771D7545F000824CB4 /* WaxObjcImport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaxObjcImport.h; sourceTree = "<group>"; };
+		5BA10C781D7545F000824CB4 /* WaxObjcImport.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = WaxObjcImport.mm; sourceTree = "<group>"; };
+		5BA10C791D7545F000824CB4 /* WaxObjcIndex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaxObjcIndex.h; sourceTree = "<group>"; };
+		5BA10C7A1D7545F000824CB4 /* WaxObjcIndex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WaxObjcIndex.m; sourceTree = "<group>"; };
+		5BA10C7B1D7545F000824CB4 /* WaxObjcMethod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaxObjcMethod.h; sourceTree = "<group>"; };
+		5BA10C7C1D7545F000824CB4 /* WaxObjcMethod.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = WaxObjcMethod.mm; sourceTree = "<group>"; };
+		5BA10C7D1D7545F000824CB4 /* WaxObjcProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaxObjcProtocol.h; sourceTree = "<group>"; };
+		5BA10C7E1D7545F000824CB4 /* WaxObjcProtocol.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = WaxObjcProtocol.mm; sourceTree = "<group>"; };
 		5BA10C801D7545F000824CB4 /* objcLex.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = objcLex.cpp; sourceTree = "<group>"; };
 		5BA10C811D7545F000824CB4 /* objcLex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = objcLex.h; sourceTree = "<group>"; };
 		5BA10C821D7545F000824CB4 /* objcParser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = objcParser.cpp; sourceTree = "<group>"; };
@@ -487,20 +487,20 @@
 		5BA10C461D7540EA00824CB4 /* ObjcIndex */ = {
 			isa = PBXGroup;
 			children = (
-				5BA10C711D7545F000824CB4 /* JPObjcArg.h */,
-				5BA10C721D7545F000824CB4 /* JPObjcArg.mm */,
-				5BA10C731D7545F000824CB4 /* JPObjcClass.h */,
-				5BA10C741D7545F000824CB4 /* JPObjcClass.mm */,
-				5BA10C751D7545F000824CB4 /* JPObjcFile.h */,
-				5BA10C761D7545F000824CB4 /* JPObjcFile.mm */,
-				5BA10C771D7545F000824CB4 /* JPObjcImport.h */,
-				5BA10C781D7545F000824CB4 /* JPObjcImport.mm */,
-				5BA10C791D7545F000824CB4 /* JPObjcIndex.h */,
-				5BA10C7A1D7545F000824CB4 /* JPObjcIndex.m */,
-				5BA10C7B1D7545F000824CB4 /* JPObjcMethod.h */,
-				5BA10C7C1D7545F000824CB4 /* JPObjcMethod.mm */,
-				5BA10C7D1D7545F000824CB4 /* JPObjcProtocol.h */,
-				5BA10C7E1D7545F000824CB4 /* JPObjcProtocol.mm */,
+				5BA10C791D7545F000824CB4 /* WaxObjcIndex.h */,
+				5BA10C7A1D7545F000824CB4 /* WaxObjcIndex.m */,
+				5BA10C751D7545F000824CB4 /* WaxObjcFile.h */,
+				5BA10C761D7545F000824CB4 /* WaxObjcFile.mm */,
+				5BA10C771D7545F000824CB4 /* WaxObjcImport.h */,
+				5BA10C781D7545F000824CB4 /* WaxObjcImport.mm */,
+				5BA10C731D7545F000824CB4 /* WaxObjcClass.h */,
+				5BA10C741D7545F000824CB4 /* WaxObjcClass.mm */,
+				5BA10C711D7545F000824CB4 /* WaxObjcArg.h */,
+				5BA10C721D7545F000824CB4 /* WaxObjcArg.mm */,
+				5BA10C7B1D7545F000824CB4 /* WaxObjcMethod.h */,
+				5BA10C7C1D7545F000824CB4 /* WaxObjcMethod.mm */,
+				5BA10C7D1D7545F000824CB4 /* WaxObjcProtocol.h */,
+				5BA10C7E1D7545F000824CB4 /* WaxObjcProtocol.mm */,
 				5BA10C7F1D7545F000824CB4 /* ObjcParser */,
 			);
 			path = ObjcIndex;
@@ -604,29 +604,29 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5BA10C891D7545F000824CB4 /* JPObjcMethod.mm in Sources */,
+				5BA10C891D7545F000824CB4 /* WaxObjcMethod.mm in Sources */,
 				5BA10BA41D75277800824CB4 /* WaxHelper.m in Sources */,
 				5B97F5391D75D0B7004C957D /* DVTTextCompletionSession+Wax.m in Sources */,
 				5BA10C541D7543D600824CB4 /* WaxMethod.m in Sources */,
-				5BA10C8A1D7545F000824CB4 /* JPObjcProtocol.mm in Sources */,
-				5BA10C871D7545F000824CB4 /* JPObjcImport.mm in Sources */,
+				5BA10C8A1D7545F000824CB4 /* WaxObjcProtocol.mm in Sources */,
+				5BA10C871D7545F000824CB4 /* WaxObjcImport.mm in Sources */,
 				5BA10C4A1D75410200824CB4 /* WaxIndex.m in Sources */,
 				5BA10C511D7543C500824CB4 /* WaxClass.m in Sources */,
 				5BA10C8B1D7545F000824CB4 /* objcLex.cpp in Sources */,
 				5B97F53C1D75D1A2004C957D /* IDEEditorDocument+Wax.m in Sources */,
-				5BA10C851D7545F000824CB4 /* JPObjcClass.mm in Sources */,
+				5BA10C851D7545F000824CB4 /* WaxObjcClass.mm in Sources */,
 				5BA10C3D1D75296C00824CB4 /* MethodSwizzle.m in Sources */,
 				5BA10C8C1D7545F000824CB4 /* objcParser.cpp in Sources */,
 				5BA10C421D753F2800824CB4 /* IDEWorkspace+Wax.m in Sources */,
 				5BA10C8F1D75467200824CB4 /* WaxCompletionItem.m in Sources */,
 				5BA10C4D1D75434A00824CB4 /* WaxFile.m in Sources */,
-				5BA10C861D7545F000824CB4 /* JPObjcFile.mm in Sources */,
+				5BA10C861D7545F000824CB4 /* WaxObjcFile.mm in Sources */,
 				5BA10C3E1D75296C00824CB4 /* NSString+Additional.m in Sources */,
 				5B97F53F1D75D211004C957D /* DVTTextCompletionDataSource+Wax.m in Sources */,
 				5BA10C451D753FF700824CB4 /* IDEIndexCompletionStrategy+Wax.m in Sources */,
-				5BA10C841D7545F000824CB4 /* JPObjcArg.mm in Sources */,
+				5BA10C841D7545F000824CB4 /* WaxObjcArg.mm in Sources */,
 				5BA10BA71D75277800824CB4 /* NSObject_Extension.m in Sources */,
-				5BA10C881D7545F000824CB4 /* JPObjcIndex.m in Sources */,
+				5BA10C881D7545F000824CB4 /* WaxObjcIndex.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

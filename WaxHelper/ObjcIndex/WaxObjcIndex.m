@@ -1,28 +1,28 @@
 //
-//  JPObjcIndex.m
+//  WaxObjcIndex.m
 //  Wax
 //
 //  Created by bang on 4/16/16.
 //  Copyright © 2016 bang. All rights reserved.
 //
 
-#import "JPObjcIndex.h"
+#import "WaxObjcIndex.h"
 #import "IDEWorkspace+Wax.h"
 #import "IDEWorkspaceArena.h"
 #import "DVTFilePath.h"
 #import "WaxCompletionItem.h"
 #import "DVTSourceCodeSymbolKind.h"
-#import "JPObjcFile.h"
-#import "JPObjcMethod.h"
-#import "JPObjcClass.h"
-#import "JPObjcProtocol.h"
+#import "WaxObjcFile.h"
+#import "WaxObjcMethod.h"
+#import "WaxObjcClass.h"
+#import "WaxObjcProtocol.h"
 
-@implementation JPObjcIndex {
+@implementation WaxObjcIndex {
     /*
      { 
         "$clsname" : {
             "super": "$superClassName"j,
-            "methods": [ $JPObjcMethod, ...]
+            "methods": [ $WaxObjcMethod, ...]
         }, ...
      }
     */
@@ -83,7 +83,7 @@
         if (_parsedClassCache[className] && _parsedClassCache[className][@"methods"]) {
             NSArray *methods = _parsedClassCache[className][@"methods"];
             NSMutableArray *completionItems = [[NSMutableArray alloc] initWithCapacity:methods.count];
-            for (JPObjcMethod *method in methods) {
+            for (WaxObjcMethod *method in methods) {
                 if (method.methodName.length == 0) {
                     continue;
                 }
@@ -151,10 +151,10 @@
 }
 
 - (void)_parseFile:(NSString *)filePath {
-    JPObjcFile *objcFile = [JPObjcFile parseFile:filePath];
+    WaxObjcFile *objcFile = [WaxObjcFile parseFile:filePath];
     if (objcFile && objcFile.classes) {
         @synchronized(self) {
-            for (JPObjcClass *objcCls in objcFile.classes) {
+            for (WaxObjcClass *objcCls in objcFile.classes) {
                 if (!objcCls.methods.count) continue;
                 if (!_parsedClassCache[objcCls.clsName]) {
                     _parsedClassCache[objcCls.clsName] = [[NSMutableDictionary alloc] init];
@@ -169,7 +169,7 @@
                     [_parsedClassCache[objcCls.clsName] setObject:objcCls.superClsName forKey:@"super"];
                 }
             }
-            for (JPObjcProtocol *prop in objcFile.protocols) {
+            for (WaxObjcProtocol *prop in objcFile.protocols) {
                 [_protocolCompletionItems addObjectsFromArray:prop.methodCompletionItems];
             }
         }
