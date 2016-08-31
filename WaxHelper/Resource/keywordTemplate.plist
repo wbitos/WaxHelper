@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>if_stat</key>
+	<dict>
+		<key>kJPCTxt</key>
+		<string>if &lt;#cond#&gt; then &lt;#code#&gt; end</string>
+		<key>kJPCDplType</key>
+		<string>Keyword</string>
+		<key>kJPCName</key>
+		<string>if ... then ... end</string>
+		<key>kJPCDplTxt</key>
+		<string>if ... then ... end</string>
+	</dict>
+	<key>while_stat</key>
+	<dict>
+		<key>kJPCTxt</key>
+		<string>while (&lt;#cond#&gt;) do &lt;#code#&gt; end</string>
+		<key>kJPCDplType</key>
+		<string>Keyword</string>
+		<key>kJPCName</key>
+		<string>while ... do ... end</string>
+		<key>kJPCDplTxt</key>
+		<string>while ... do ... end</string>
+	</dict>
+	<key>require</key>
+	<dict>
+		<key>kJPCTxt</key>
+		<string>require(&apos;&lt;#class#&gt;&apos;)</string>
+		<key>kJPCDplType</key>
+		<string>Keyword</string>
+		<key>kJPCName</key>
+		<string>require(class)</string>
+		<key>kJPCDplTxt</key>
+		<string>require(class)</string>
+	</dict>
+	<key>waxClass</key>
+	<dict>
+		<key>kJPCTxt</key>
+		<string>waxClass{&apos;&lt;#class#&gt;&apos;,  &lt;#baseClass#&gt;}</string>
+		<key>kJPCDplType</key>
+		<string>Keyword</string>
+		<key>kJPCName</key>
+		<string>waxClass(class)</string>
+		<key>kJPCDplTxt</key>
+		<string>waxClass(class)</string>
+	</dict>
+	<key>include</key>
+	<dict>
+		<key>kJPCTxt</key>
+		<string>include(&apos;&lt;#filePath#&gt;&apos;)</string>
+		<key>kJPCDplType</key>
+		<string>Keyword</string>
+		<key>kJPCName</key>
+		<string>include(filePath)</string>
+		<key>kJPCDplTxt</key>
+		<string>include(filePath)</string>
+	</dict>
+	<key>resourcePath</key>
+	<dict>
+		<key>kJPCTxt</key>
+		<string>resourcePath(&apos;&lt;#filePath#&gt;&apos;)</string>
+		<key>kJPCDplType</key>
+		<string>Keyword</string>
+		<key>kJPCName</key>
+		<string>resourcePath(filePath)</string>
+		<key>kJPCDplTxt</key>
+		<string>resourcePath(filePath)</string>
+	</dict>
+	<key>global</key>
+	<dict>
+		<key>kJPCTxt</key>
+		<string>global</string>
+		<key>kJPCDplType</key>
+		<string>Keyword</string>
+		<key>kJPCName</key>
+		<string>global</string>
+		<key>kJPCDplTxt</key>
+		<string>global</string>
+	</dict>
+	<key>function</key>
+	<dict>
+		<key>kJPCTxt</key>
+		<string>function &lt;#name#&gt;(&lt;#params#&gt;)  &lt;#code#&gt; end</string>
+		<key>kJPCDplType</key>
+		<string>Keyword</string>
+		<key>kJPCName</key>
+		<string>function name(params) ... end</string>
+		<key>kJPCDplTxt</key>
+		<string>function name(params) ... end</string>
+	</dict>
+	<key>forIn</key>
+	<dict>
+		<key>kJPCTxt</key>
+		<string>for &lt;#item#&gt; in &lt;#items#&gt; do &lt;#codes#&gt; end</string>
+		<key>kJPCDplType</key>
+		<string>Keyword</string>
+		<key>kJPCName</key>
+		<string>forin</string>
+		<key>kJPCDplTxt</key>
+		<string>for..in</string>
+	</dict>
+	<key>for</key>
+	<dict>
+		<key>kJPCTxt</key>
+		<string>for &lt;#i#&gt;=&lt;#min#&gt;,&lt;#max#&gt; do &lt;#codes#&gt; end</string>
+		<key>kJPCDplType</key>
+		<string>Keyword</string>
+		<key>kJPCName</key>
+		<string>for()</string>
+		<key>kJPCDplTxt</key>
+		<string>for()</string>
+	</dict>
+	<key>CGRect</key>
+	<dict>
+		<key>kJPCTxt</key>
+		<string>{x: &lt;#x#&gt;, y: &lt;#y#&gt;, width: &lt;#width#&gt;, height: &lt;#height#&gt;}</string>
+		<key>kJPCDplType</key>
+		<string>Keyword</string>
+		<key>kJPCName</key>
+		<string>CGRect{x:,y:,width:,height:}</string>
+		<key>kJPCDplTxt</key>
+		<string>CGRect{x:,y:,width:,height:}</string>
+	</dict>
+	<key>CGSize</key>
+	<dict>
+		<key>kJPCTxt</key>
+		<string>{width: &lt;#width#&gt;, height: &lt;#height#&gt;}</string>
+		<key>kJPCDplType</key>
+		<string>Keyword</string>
+		<key>kJPCName</key>
+		<string>CGSize{width:,height:}</string>
+		<key>kJPCDplTxt</key>
+		<string>CGSize{width:,height:}</string>
+	</dict>
+	<key>CGPoint</key>
+	<dict>
+		<key>kJPCTxt</key>
+		<string>{x: &lt;#x#&gt;, y: &lt;#y#&gt;}</string>
+		<key>kJPCDplType</key>
+		<string>Keyword</string>
+		<key>kJPCName</key>
+		<string>CGPoint{x:,y:}</string>
+		<key>kJPCDplTxt</key>
+		<string>CGPoint{x:,y:}</string>
+	</dict>
+	<key>NSRange</key>
+	<dict>
+		<key>kJPCTxt</key>
+		<string>{location: &lt;#location#&gt;, length: &lt;#length#&gt;}</string>
+		<key>kJPCDplType</key>
+		<string>Keyword</string>
+		<key>kJPCName</key>
+		<string>NSRange{location:,length:}</string>
+		<key>kJPCDplTxt</key>
+		<string>NSRange{location:,length:}</string>
+	</dict>
+</dict>
+</plist>
