@@ -11,6 +11,8 @@
 
 @interface WaxFile : NSObject
 @property (nonatomic, strong, readonly) WaxClass *waxClass;
+@property (nonatomic, strong, readonly) NSArray *requires;
+
 @property (nonatomic, strong, readonly) NSArray *keywordCompletionItems;
 @property (nonatomic, strong, readonly) NSArray *methodCompletionItems;
 

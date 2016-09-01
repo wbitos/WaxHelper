@@ -15,6 +15,7 @@
 
 @interface WaxFile ()
 @property (nonatomic, strong) WaxClass *waxClass;
+@property (nonatomic, strong) NSMutableArray *requires;
 
 @property (nonatomic, strong) NSArray *keywords;
 @property (nonatomic, strong) NSMutableArray *keywordCompletionItems;
@@ -27,9 +28,9 @@
 static NSString *_regexWaxClassDefineStr = @"waxClass\\s*\\{\\s*\\\"(\\w+)\\\"\\s*(,\\s*\\w+\\s*){0,1}(,\\s*protocols\\s*=\\s*\\{(\\s*\\\"\\S+\\\"\\s*,{0,1})*\\}){0,1}\\s*\\}";
 static NSString *_regexMethodStr = @".*function\\s*(\\w+)\\s*\\((.*)\\)";
 static NSString *_regexKeywordStr = @"([a-zA-Z]|_|$){1}\\w*";
-static NSString *_regexPropertyStr = @"self.(\\w+)\\s*=";
+static NSString *_regexPropertyStr = @"self.(\\w+)[.\\w]*\\s*=";
+static NSString *_regexRequireStr = @"require\\s*\"(\\w)\"";
 
-static NSRegularExpression* _regexMethod;
 static NSRegularExpression* _regexKeyword;
 
 - (instancetype)initWithContent:(NSString *)content {
@@ -45,6 +46,17 @@ static NSRegularExpression* _regexKeyword;
 }
 
 - (WaxClass *)_defineClasseWithContent:(NSString *)content {
+    _requires = [NSMutableArray array];
+    
+    NSArray *requireMatches = [content arrayOfDictionariesByMatchingRegex:_regexRequireStr withKeysAndCaptures:@"filename", 1, nil];
+    
+    for (NSDictionary *requireMatch in requireMatches) {
+        NSString *filename = requireMatch[@"filename"];
+        if (filename) {
+            [_requires addObject:filename];
+        }
+    }
+    
     NSDictionary *matches = [content dictionaryByMatchingRegex:_regexWaxClassDefineStr withKeysAndCaptures:@"className", 1, @"baseClassName", 2, @"protocols", 3, nil];
     NSString *classNameString = matches[@"className"];
     NSString *baseClassNameString = matches[@"baseClassName"];
