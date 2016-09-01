@@ -7,3 +7,6 @@ Install Lua Syntax Coloring Plugin Which Can Be Found In https://github.com/brei
 
 # Next Step
 Just Run In Xcode To Install WaxHelper
+
+ 
+![](http://www.wbitos.com/statics/video/WaxHelper.mov)  
