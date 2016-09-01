@@ -93,7 +93,7 @@
             NSString *setName = [NSString stringWithFormat:@"set%@%@", [[p substringToIndex:1] uppercaseString], [p substringFromIndex:1]];
             WaxCompletionItem *itemSet = [[WaxCompletionItem alloc] initWithDictinary:@{
                                                                                         kJPCompeletionName: [NSString stringWithFormat:@"%@()", setName],
-                                                                                        kJPCompeletionDisplayText: [NSString stringWithFormat:@"%@( val )", setName],
+                                                                                        kJPCompeletionDisplayText: [NSString stringWithFormat:@"%@(val)", setName],
                                                                                         kJPCompeletionText: [NSString stringWithFormat:@"%@(<# val #\>)", setName],
                                                                                         kJPCompeletionDisplayType: @"Method",
                                                                                         kJPCompeletionKind: [DVTSourceCodeSymbolKind functionSymbolKind]

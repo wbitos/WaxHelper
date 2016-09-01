@@ -78,7 +78,7 @@
 
 - (NSArray *)_completionItemsWithClass:(NSString *)className {
     @synchronized(self) {
-        NSLog(@"_completionItemsWithClass:%@", className);
+        NSLog(@"WaxHelper[WaxObjcIndex]- _completionItemsWithClass:%@", className);
         
         if (_parsedClassCache[className] && _parsedClassCache[className][@"methods"]) {
             NSArray *methods = _parsedClassCache[className][@"methods"];
@@ -96,7 +96,7 @@
 }
 
 - (NSArray *)methodCompletionItemsWithClasses:(NSArray *)classes {
-    NSLog(@"methodCompletionItemsWithClasses:%@", classes);
+    NSLog(@"WaxHelper[WaxObjcIndex]- methodCompletionItemsWithClasses:%@", classes);
     @synchronized(self) {
         if (!_parsedClassCache) {
             _parsedClassCache = [[NSMutableDictionary alloc] init];
@@ -111,12 +111,20 @@
         [ret addObjectsFromArray:[self _completionItemsWithClass:clsName]];
     }
     
-    NSLog(@"methodCompletionItemsWithClasses return:%@", ret);
+    NSLog(@"WaxHelper[WaxObjcIndex]- methodCompletionItemsWithClasses return:%@", ret);
     return ret;
 }
 
 - (NSArray *)protocolCompletionItems {
     @synchronized (self) {
+        if (!_parsedClassCache) {
+            _parsedClassCache = [[NSMutableDictionary alloc] init];
+            _protocolCompletionItems = [[NSMutableArray alloc] init];
+            [self _scanProjectHeaders];
+            [self _scanDefaultFramework];
+        }
+        
+        NSLog(@"WaxHelper[WaxObjcIndex]- protocolCompletionItems:%@", _protocolCompletionItems);
         return _protocolCompletionItems;
     }
 }
@@ -126,7 +134,7 @@
     NSArray *fileList = [[NSFileManager defaultManager] subpathsOfDirectoryAtPath:folder error:nil];
     for (NSString *file in fileList) {
         if ([file hasSuffix:@".h"]) {
-            NSLog(@"project header:%@", file);
+            NSLog(@"WaxHelper[WaxObjcIndex]- project header:%@", file);
             NSString *filePath = [NSString stringWithFormat:@"%@/%@", folder, file];
             [self _parseFile:filePath];
         }
@@ -142,7 +150,7 @@
         NSArray *headers = [[NSFileManager defaultManager] subpathsAtPath:dir];
         for (NSString *header in headers) {
             if ([header hasSuffix:@".h"] || [header hasSuffix:@".H"]) {
-                NSLog(@"scan %@", header);
+                NSLog(@"WaxHelper[WaxObjcIndex]- scan %@", header);
                 NSString *filePath = [NSString stringWithFormat:@"%@/%@", dir, header];
                 [self _parseFile:filePath];
             }

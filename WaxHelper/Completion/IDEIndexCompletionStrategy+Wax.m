@@ -60,16 +60,29 @@
             // next method
             e = eWaxIndexTypeMethod;
         }
+        else if ([prevChar isEqualToString:@" "]) {
+            e = eWaxIndexTypeFunction;
+        }
+        
         if (loc > 0) {
             preWord = [[[[txtView.textStorage.string substringToIndex:loc] componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] lastObject] trim];
         }
     }
     
+    NSLog(@"WaxHelper[WaxIndex]- preWord:%@", preWord);
+
     if ([preWord length] > 0 && e != eWaxIndexTypeUnknown) {
         NSArray *fileItems = [wspace.waxIndex completionItemsForFile:filePath preWord:preWord indexType:e];
         [items addObjectsFromArray:fileItems];
     }
 
+    if ([[preWord trim] isEqualToString:@"function"]) {
+        NSLog(@"WaxHelper[WaxIndex]- function");
+
+        NSArray *protocolItems = [wspace.waxIndex protocolCompletionItemsForFile:filePath];
+        [items addObjectsFromArray:protocolItems];
+    }
+    
     NSArray *templateKeywordItems = [wspace.waxIndex suggestQuickCompletionTemplate];
     [items addObjectsFromArray:templateKeywordItems];
 

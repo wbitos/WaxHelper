@@ -15,13 +15,17 @@ typedef enum : NSUInteger {
     eWaxIndexTypeClassMethod,
     eWaxIndexTypeProperty,
     eWaxIndexTypeClassProperty,
+    eWaxIndexTypeFunction,
+
 } EWaxIndexType;
 
 @interface WaxIndex : NSObject
 - (instancetype)initWithWorkspace:(IDEWorkspace *)workspace;
 
 - (NSArray *)completionItemsForFile:(NSString *)filePath preWord:(NSString *)preWord indexType:(EWaxIndexType)eType;
--(NSArray *)suggestQuickCompletionTemplate;
+- (NSArray *)protocolCompletionItemsForFile:(NSString *)filePath;
+- (NSArray *)classCompletionItemsForFile:(NSString *)filePath;
+- (NSArray *)suggestQuickCompletionTemplate;
 
 - (NSArray *)keywordCompletionItemsWithFilePath:(NSString *)filePath;
 

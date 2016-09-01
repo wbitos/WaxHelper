@@ -93,13 +93,33 @@
             [self _addItemsFrom:ocBaseMethodItems to:completionItems];
         }
     }
-    if (eType == eWaxIndexTypeUnknown) {
-        
-    }
-    [self _addItemsFrom:[file.waxClass classCompletionItems] to:completionItems];
-    [self _addItemsFrom:[_workspace.objcIndex protocolCompletionItems] to:completionItems];
     
     return completionItems;
+}
+
+- (NSArray *)protocolCompletionItemsForFile:(NSString *)filePath {
+    @synchronized(self) {
+        if (!_waxFileCache) {
+            _waxFileCache = [self _scanProjectWax];
+        }
+    }
+    NSLog(@"WaxHelper[WaxIndex]- protocolCompletionItemsForFile:%@", filePath);
+    
+    NSMutableArray *completionItems = [[NSMutableArray alloc] init];
+    [self _addItemsFrom:[_workspace.objcIndex protocolCompletionItems] to:completionItems];
+//    WaxFile *file = _waxFileCache[filePath];
+    return completionItems;
+}
+
+- (NSArray *)classCompletionItemsForFile:(NSString *)filePath {
+    @synchronized(self) {
+        if (!_waxFileCache) {
+            _waxFileCache = [self _scanProjectWax];
+        }
+    }
+    NSLog(@"WaxHelper[WaxIndex]- classCompletionItemsForFile:%@", filePath);
+    WaxFile *file = _waxFileCache[filePath];
+    return [file.waxClass classCompletionItems];
 }
 
 -(NSArray *)suggestQuickCompletionTemplate {

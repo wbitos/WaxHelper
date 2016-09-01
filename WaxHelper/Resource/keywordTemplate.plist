@@ -2,6 +2,17 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>toblock</key>
+	<dict>
+		<key>kJPCTxt</key>
+		<string>toblock(     function (&lt;#args#&gt;)     end     , {&lt;#return#&gt;, &lt;#arg#&gt;})</string>
+		<key>kJPCDplType</key>
+		<string>Keyword</string>
+		<key>kJPCName</key>
+		<string>toblock</string>
+		<key>kJPCDplTxt</key>
+		<string>toblock</string>
+	</dict>
 	<key>if_stat</key>
 	<dict>
 		<key>kJPCTxt</key>
