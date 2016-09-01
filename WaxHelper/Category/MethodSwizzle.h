@@ -23,9 +23,9 @@
 
 #import <Cocoa/Cocoa.h>
 
-void MethodSwizzle(Class aClass, SEL orig_sel, SEL alt_sel);
-void MethodSwizzleClass(Class aClass, SEL orig_sel, SEL alt_sel);
+void WaxMethodSwizzle(Class aClass, SEL orig_sel, SEL alt_sel);
+void WaxMethodSwizzleClass(Class aClass, SEL orig_sel, SEL alt_sel);
 
 
 #define SWIZZLE(name)\
-MethodSwizzle(self, @selector(name), @selector(swizzle_##name))
+WaxMethodSwizzle(self, @selector(name), @selector(wax_swizzle_##name))

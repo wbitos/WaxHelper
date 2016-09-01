@@ -27,7 +27,7 @@
 	<key>require</key>
 	<dict>
 		<key>kJPCTxt</key>
-		<string>require(&apos;&lt;#class#&gt;&apos;)</string>
+		<string>require(&quot;&lt;#class#&gt;&quot;)</string>
 		<key>kJPCDplType</key>
 		<string>Keyword</string>
 		<key>kJPCName</key>
@@ -38,7 +38,7 @@
 	<key>waxClass</key>
 	<dict>
 		<key>kJPCTxt</key>
-		<string>waxClass{&apos;&lt;#class#&gt;&apos;,  &lt;#baseClass#&gt;}</string>
+		<string>waxClass{&quot;&lt;#class#&gt;&quot;,  &lt;#baseClass#&gt;, protocols={}}</string>
 		<key>kJPCDplType</key>
 		<string>Keyword</string>
 		<key>kJPCName</key>
@@ -49,7 +49,7 @@
 	<key>include</key>
 	<dict>
 		<key>kJPCTxt</key>
-		<string>include(&apos;&lt;#filePath#&gt;&apos;)</string>
+		<string>include(&quot;&lt;#filePath#&gt;&quot;)</string>
 		<key>kJPCDplType</key>
 		<string>Keyword</string>
 		<key>kJPCName</key>
@@ -60,7 +60,7 @@
 	<key>resourcePath</key>
 	<dict>
 		<key>kJPCTxt</key>
-		<string>resourcePath(&apos;&lt;#filePath#&gt;&apos;)</string>
+		<string>resourcePath(&quot;&lt;#filePath#&gt;&quot;)</string>
 		<key>kJPCDplType</key>
 		<string>Keyword</string>
 		<key>kJPCName</key>
@@ -115,7 +115,7 @@
 	<key>CGRect</key>
 	<dict>
 		<key>kJPCTxt</key>
-		<string>{x: &lt;#x#&gt;, y: &lt;#y#&gt;, width: &lt;#width#&gt;, height: &lt;#height#&gt;}</string>
+		<string>CGRect(&lt;#x#&gt;, &lt;#y#&gt;, &lt;#width#&gt;, &lt;#height#&gt;)</string>
 		<key>kJPCDplType</key>
 		<string>Keyword</string>
 		<key>kJPCName</key>
@@ -126,7 +126,7 @@
 	<key>CGSize</key>
 	<dict>
 		<key>kJPCTxt</key>
-		<string>{width: &lt;#width#&gt;, height: &lt;#height#&gt;}</string>
+		<string>CGSize(&lt;#width#&gt;, &lt;#height#&gt;)</string>
 		<key>kJPCDplType</key>
 		<string>Keyword</string>
 		<key>kJPCName</key>
@@ -137,7 +137,7 @@
 	<key>CGPoint</key>
 	<dict>
 		<key>kJPCTxt</key>
-		<string>{x: &lt;#x#&gt;, y: &lt;#y#&gt;}</string>
+		<string>CGPoint(&lt;#x#&gt;, &lt;#y#&gt;)</string>
 		<key>kJPCDplType</key>
 		<string>Keyword</string>
 		<key>kJPCName</key>
@@ -148,13 +148,24 @@
 	<key>NSRange</key>
 	<dict>
 		<key>kJPCTxt</key>
-		<string>{location: &lt;#location#&gt;, length: &lt;#length#&gt;}</string>
+		<string>NSRange(&lt;#location#&gt;, &lt;#length#&gt;)</string>
 		<key>kJPCDplType</key>
 		<string>Keyword</string>
 		<key>kJPCName</key>
 		<string>NSRange{location:,length:}</string>
 		<key>kJPCDplTxt</key>
 		<string>NSRange{location:,length:}</string>
+	</dict>
+	<key>UIEdgeInsets</key>
+	<dict>
+		<key>kJPCTxt</key>
+		<string>UIEdgeInsets(&lt;#top#&gt;, &lt;#left#&gt;, &lt;#bottom#&gt;, &lt;#right#&gt;)</string>
+		<key>kJPCDplType</key>
+		<string>Keyword</string>
+		<key>kJPCName</key>
+		<string>UIEdgeInsets{top:,left:,bottom:,right:}</string>
+		<key>kJPCDplTxt</key>
+		<string>UIEdgeInsets{top:,left:,bottom:,right:}</string>
 	</dict>
 </dict>
 </plist>

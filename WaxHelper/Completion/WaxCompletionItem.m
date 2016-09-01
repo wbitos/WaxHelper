@@ -37,7 +37,7 @@
 }
 
 - (NSString *)completionText {
-    return [NSString stringWithFormat:@"%@%@", self.prefix, [_dict objectForKey:kJPCompeletionText]];
+    return [NSString stringWithFormat:@"%@%@", self.prefixText == nil ? @"" : self.prefixText, [_dict objectForKey:kJPCompeletionText]];
 }
 
 - (void)_fillInTheRest { }

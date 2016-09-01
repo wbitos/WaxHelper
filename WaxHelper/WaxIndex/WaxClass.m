@@ -9,22 +9,21 @@
 #import "WaxClass.h"
 #import "WaxCompletionItem.h"
 #import "DVTSourceCodeSymbolKind.h"
+#import "WaxMethod.h"
 
 @interface WaxClass ()
-@property (nonatomic, strong) NSString *cls;
-@property (nonatomic, strong) NSString *baseCls;
-@property (nonatomic, strong) NSArray *properties;
 
 @end
 
 @implementation WaxClass
-- (instancetype)initWithClass:(NSString *)cls baseClass:(NSString *)baseCls properties:(NSArray *)properties
-{
+- (instancetype)initWithClass:(NSString *)cls baseClass:(NSString *)baseCls protocols:(NSArray *)protocols properties:(NSArray *)properties methods:(NSArray *)methods {
     self = [super init];
     if (self) {
         _cls = cls;
         _baseCls = baseCls;
         _properties = properties;
+        _protocols = protocols;
+        _methods = methods;
     }
     return self;
 }
@@ -56,28 +55,49 @@
     return items;
 }
 
-- (NSArray *)propertyCompletionItems
-{
+- (NSArray *)methodCompletionItems {
+    NSMutableArray *items = [[NSMutableArray alloc] init];
+    for (WaxMethod *m in _methods) {
+        WaxCompletionItem *item = [m completionItem];
+        if (item) {
+            [items addObject:item];
+        }
+    }
+    return items;
+}
+
+- (NSArray *)propertyCompletionItems {
     NSMutableArray *items = [[NSMutableArray alloc] init];
     for (NSString *prop in _properties) {
         WaxCompletionItem *item = [[WaxCompletionItem alloc] initWithDictinary:@{
                                                                                kJPCompeletionName: prop,
-                                                                               kJPCompeletionDisplayText: [NSString stringWithFormat:@"%@()", prop],
-                                                                               kJPCompeletionText: [NSString stringWithFormat:@"%@()", prop],
+                                                                               kJPCompeletionDisplayText: [NSString stringWithFormat:@"%@", prop],
+                                                                               kJPCompeletionText: [NSString stringWithFormat:@"%@", prop],
                                                                                kJPCompeletionDisplayType: @"Property",
-                                                                               kJPCompeletionKind: [DVTSourceCodeSymbolKind functionSymbolKind]
+                                                                               kJPCompeletionKind: [DVTSourceCodeSymbolKind propertySymbolKind]
                                                                                }];
         [items addObject:item];
+    }
+    return items;
+}
+
+- (NSArray *)propertySetterCompletionItems {
+    NSMutableArray *items = [[NSMutableArray alloc] init];
+    for (NSString *prop in _properties) {
+        NSString *p = prop;
+        if ([prop hasPrefix:@"_"]) {
+            p = [prop substringFromIndex:1];
+        }
         
-        if (prop.length > 1) {
-            NSString *setName = [NSString stringWithFormat:@"set%@%@", [[prop substringToIndex:1] uppercaseString], [prop substringFromIndex:1]];
+        if (p.length > 1) {
+            NSString *setName = [NSString stringWithFormat:@"set%@%@", [[p substringToIndex:1] uppercaseString], [p substringFromIndex:1]];
             WaxCompletionItem *itemSet = [[WaxCompletionItem alloc] initWithDictinary:@{
-                                                                                      kJPCompeletionName: [NSString stringWithFormat:@"%@()", setName],
-                                                                                      kJPCompeletionDisplayText: [NSString stringWithFormat:@"%@( val )", setName],
-                                                                                      kJPCompeletionText: [NSString stringWithFormat:@"%@(<# val #\>)", setName],
-                                                                                      kJPCompeletionDisplayType: @"property",
-                                                                                      kJPCompeletionKind: [DVTSourceCodeSymbolKind functionSymbolKind]
-                                                                                      }];
+                                                                                        kJPCompeletionName: [NSString stringWithFormat:@"%@()", setName],
+                                                                                        kJPCompeletionDisplayText: [NSString stringWithFormat:@"%@( val )", setName],
+                                                                                        kJPCompeletionText: [NSString stringWithFormat:@"%@(<# val #\>)", setName],
+                                                                                        kJPCompeletionDisplayType: @"Method",
+                                                                                        kJPCompeletionKind: [DVTSourceCodeSymbolKind functionSymbolKind]
+                                                                                        }];
             [items addObject:itemSet];
         }
     }

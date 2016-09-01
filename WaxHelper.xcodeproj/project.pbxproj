@@ -44,6 +44,7 @@
 		5BA10C8B1D7545F000824CB4 /* objcLex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5BA10C801D7545F000824CB4 /* objcLex.cpp */; };
 		5BA10C8C1D7545F000824CB4 /* objcParser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5BA10C821D7545F000824CB4 /* objcParser.cpp */; };
 		5BA10C8F1D75467200824CB4 /* WaxCompletionItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA10C8E1D75467200824CB4 /* WaxCompletionItem.m */; };
+		5BCB1F4A1D772EA800500E85 /* RegexKitLite.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BCB1F491D772EA800500E85 /* RegexKitLite.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -232,6 +233,8 @@
 		5BA10C831D7545F000824CB4 /* objcParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = objcParser.h; sourceTree = "<group>"; };
 		5BA10C8D1D75467200824CB4 /* WaxCompletionItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaxCompletionItem.h; sourceTree = "<group>"; };
 		5BA10C8E1D75467200824CB4 /* WaxCompletionItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WaxCompletionItem.m; sourceTree = "<group>"; };
+		5BCB1F481D772EA800500E85 /* RegexKitLite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegexKitLite.h; sourceTree = "<group>"; };
+		5BCB1F491D772EA800500E85 /* RegexKitLite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegexKitLite.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -300,6 +303,7 @@
 		5BA10B9E1D75277800824CB4 /* WaxHelper */ = {
 			isa = PBXGroup;
 			children = (
+				5BCB1F471D772EA800500E85 /* RegexKitLite */,
 				5B9AD7D91D757BC9005E6ED7 /* Resource */,
 				5BA10C461D7540EA00824CB4 /* ObjcIndex */,
 				5BA10C471D7540EA00824CB4 /* WaxIndex */,
@@ -532,6 +536,15 @@
 			path = ObjcParser;
 			sourceTree = "<group>";
 		};
+		5BCB1F471D772EA800500E85 /* RegexKitLite */ = {
+			isa = PBXGroup;
+			children = (
+				5BCB1F481D772EA800500E85 /* RegexKitLite.h */,
+				5BCB1F491D772EA800500E85 /* RegexKitLite.m */,
+			);
+			path = RegexKitLite;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -622,6 +635,7 @@
 				5BA10C4D1D75434A00824CB4 /* WaxFile.m in Sources */,
 				5BA10C861D7545F000824CB4 /* WaxObjcFile.mm in Sources */,
 				5BA10C3E1D75296C00824CB4 /* NSString+Additional.m in Sources */,
+				5BCB1F4A1D772EA800500E85 /* RegexKitLite.m in Sources */,
 				5B97F53F1D75D211004C957D /* DVTTextCompletionDataSource+Wax.m in Sources */,
 				5BA10C451D753FF700824CB4 /* IDEIndexCompletionStrategy+Wax.m in Sources */,
 				5BA10C841D7545F000824CB4 /* WaxObjcArg.mm in Sources */,
@@ -723,6 +737,7 @@
 				INFOPLIST_FILE = WaxHelper/Info.plist;
 				INSTALL_PATH = "/Library/Application Support/Developer/Shared/Xcode/Plug-ins";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				OTHER_LDFLAGS = "-licucore";
 				PRODUCT_BUNDLE_IDENTIFIER = com.wbitos.WaxHelper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = xcplugin;
@@ -744,6 +759,7 @@
 				INFOPLIST_FILE = WaxHelper/Info.plist;
 				INSTALL_PATH = "/Library/Application Support/Developer/Shared/Xcode/Plug-ins";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				OTHER_LDFLAGS = "-licucore";
 				PRODUCT_BUNDLE_IDENTIFIER = com.wbitos.WaxHelper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = xcplugin;

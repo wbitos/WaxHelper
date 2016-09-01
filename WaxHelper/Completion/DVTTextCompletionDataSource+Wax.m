@@ -17,12 +17,12 @@
     SWIZZLE(strategies);
 }
 
-- (NSArray*)swizzle_strategies {
+- (NSArray*)wax_swizzle_strategies {
     NSLog(@"WaxHelper[DVTTextCompletionDataSource]- language identifire:%@", self.language.identifier);
     if ([[self.language.identifier lowercaseString] hasSuffix:@".lua"]) {
         return [NSArray arrayWithObject:[[IDEIndexCompletionStrategy alloc] init]];
     }else{
-        return [self swizzle_strategies];
+        return [self wax_swizzle_strategies];
     }
 }
 @end

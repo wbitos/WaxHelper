@@ -24,7 +24,7 @@
 #import "MethodSwizzle.h"
 #import <objc/objc-class.h>
 
-void MethodSwizzle(Class aClass, SEL orig_sel, SEL alt_sel)
+void WaxMethodSwizzle(Class aClass, SEL orig_sel, SEL alt_sel)
 {
     Method orig_method = nil, alt_method = nil;
   
@@ -38,7 +38,7 @@ void MethodSwizzle(Class aClass, SEL orig_sel, SEL alt_sel)
 	}
 }
 
-void MethodSwizzleClass(Class aClass, SEL orig_sel, SEL alt_sel)
+void WaxMethodSwizzleClass(Class aClass, SEL orig_sel, SEL alt_sel)
 {
     Method orig_method = nil, alt_method = nil;
 	

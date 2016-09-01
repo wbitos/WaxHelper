@@ -13,6 +13,8 @@
 #import "WaxObjcIndex.h"
 #import "WaxCompletionItem.h"
 #import "DVTSourceCodeSymbolKind.h"
+#import "WaxClass.h"
+#import "WaxMethod.h"
 
 @interface WaxIndex ()
 @property (nonatomic, strong) IDEWorkspace *workspace;
@@ -51,36 +53,56 @@
     });
 }
 
-- (NSDictionary *)completionItemsForFile:(NSString *)filePath {
+- (NSArray *)completionItemsForFile:(NSString *)filePath preWord:(NSString *)preWord indexType:(EWaxIndexType)eType {
     @synchronized(self) {
         if (!_waxFileCache) {
             _waxFileCache = [self _scanProjectWax];
         }
     }
-    
-    NSMutableDictionary *completionItems = [[NSMutableDictionary alloc] init];
+    NSLog(@"WaxHelper[WaxIndex]- completionItemsForFile:%@ preWord:%@ indexType:%ld", filePath, preWord, (long)eType);
+    NSMutableArray *completionItems = [[NSMutableArray alloc] init];
     WaxFile *file = _waxFileCache[filePath];
-    [completionItems setObject:[[NSMutableArray alloc] init] forKey:@"methods"];
-    [completionItems setObject:[[NSMutableArray alloc] init] forKey:@"keywords"];
     
-    if (file.waxClass.className) {
-        NSArray *ocMethodItems = [_workspace.objcIndex methodCompletionItemsWithClasses:@[file.waxClass.className]];
-        NSLog(@"WaxHelper[WaxIndex]- ocMethodItems:%@ for:%@", ocMethodItems, file.waxClass.className);
-        [self _addItemsFrom:ocMethodItems to:completionItems[@"methods"]];
+    if (file.waxClass) {
+        if (eType == eWaxIndexTypeProperty) {
+            NSArray *propertyItems = [file.waxClass propertyCompletionItems];
+            NSLog(@"WaxHelper[WaxIndex]- propertyItems:%@ for:%@", propertyItems, file.waxClass.className);
+            [self _addItemsFrom:propertyItems to:completionItems];
+        }
+        else if (eType == eWaxIndexTypeMethod) {
+            NSArray *propertySetterItems = [file.waxClass propertySetterCompletionItems];
+            NSLog(@"WaxHelper[WaxIndex]- propertySetterItems:%@ for:%@", propertySetterItems, file.waxClass.className);
+            [self _addItemsFrom:propertySetterItems to:completionItems];
+            
+            NSArray *methodItems = [file.waxClass methodCompletionItems];
+            NSLog(@"WaxHelper[WaxIndex]- methodItems:%@ for:%@", methodItems, file.waxClass.className);
+            [self _addItemsFrom:methodItems to:completionItems];
+        }
     }
     
-    if (file.waxClass.baseCls) {
-        NSArray *ocBaseMethodItems = [_workspace.objcIndex methodCompletionItemsWithClasses:@[file.waxClass.baseCls]];
-        NSLog(@"WaxHelper[WaxIndex]- ocBaseMethodItems:%@ for:%@", ocBaseMethodItems, file.waxClass.baseCls);
-        [self _addItemsFrom:ocBaseMethodItems to:completionItems[@"methods"]];
+    if (eType == eWaxIndexTypeMethod) {
+        if (file.waxClass.className) {
+            NSArray *ocMethodItems = [_workspace.objcIndex methodCompletionItemsWithClasses:@[file.waxClass.className]];
+            NSLog(@"WaxHelper[WaxIndex]- ocMethodItems:%@ for:%@", ocMethodItems, file.waxClass.className);
+            [self _addItemsFrom:ocMethodItems to:completionItems];
+        }
+        
+        if (file.waxClass.baseCls) {
+            NSArray *ocBaseMethodItems = [_workspace.objcIndex methodCompletionItemsWithClasses:@[file.waxClass.baseCls]];
+            NSLog(@"WaxHelper[WaxIndex]- ocBaseMethodItems:%@ for:%@", ocBaseMethodItems, file.waxClass.baseCls);
+            [self _addItemsFrom:ocBaseMethodItems to:completionItems];
+        }
     }
+    if (eType == eWaxIndexTypeUnknown) {
+        
+    }
+    [self _addItemsFrom:[file.waxClass classCompletionItems] to:completionItems];
+    [self _addItemsFrom:[_workspace.objcIndex protocolCompletionItems] to:completionItems];
     
-    [self _addItemsFrom:file.classCompletionItems to:completionItems[@"keywords"]];
-    [self _addItemsFrom:file.methodCompletionItems to:completionItems[@"methods"]];
-    [self _addItemsFrom:file.propertyCompletionItems to:completionItems[@"methods"]];
-    
-    [self _addItemsFrom:[_workspace.objcIndex protocolCompletionItems] to:completionItems[@"methods"]];
-    //keywordTemplate.plist
+    return completionItems;
+}
+
+-(NSArray *)suggestQuickCompletionTemplate {
     if (!_keywordCompletionItemsCache) {
         NSMutableArray *items = [[NSMutableArray alloc] init];
         NSArray *symbols = [self _loadKeywordTemplates];
@@ -90,64 +112,10 @@
         }
         _keywordCompletionItemsCache = items;
     }
-    [self _addItemsFrom:_keywordCompletionItemsCache to:completionItems[@"keywords"]];
-    return completionItems;
+    return _keywordCompletionItemsCache;
 }
 
-- (NSDictionary *)completionItemsInProject {
-    NSLog(@"WaxHelper[WaxIndex]- completionItemsInProject");
-    @synchronized(self) {
-        if (!_waxFileCache) {
-            _waxFileCache = [self _scanProjectWax];
-        }
-        
-        if (!_allCompletionItemsCache) {
-            NSMutableDictionary *completionItems = [[NSMutableDictionary alloc] init];
-            [completionItems setObject:[[NSMutableArray alloc] init] forKey:@"methods"];
-            [completionItems setObject:[[NSMutableArray alloc] init] forKey:@"keywords"];
-            
-            NSLog(@"WaxHelper[WaxIndex]- wax file cache:%@", _waxFileCache);
-            for (NSString *key in _waxFileCache) {
-                WaxFile *file = _waxFileCache[key];
-
-                if (file.waxClass.className) {
-                    NSArray *ocMethodItems = [_workspace.objcIndex methodCompletionItemsWithClasses:@[file.waxClass.className]];
-                    [self _addItemsFrom:ocMethodItems to:completionItems[@"methods"]];
-                }
-
-                if (file.waxClass.baseCls) {
-                    NSArray *ocBaseMethodItems = [_workspace.objcIndex methodCompletionItemsWithClasses:@[file.waxClass.baseCls]];
-                    [self _addItemsFrom:ocBaseMethodItems to:completionItems[@"methods"]];
-                }
-                
-                [self _addItemsFrom:file.classCompletionItems to:completionItems[@"keywords"]];
-                [self _addItemsFrom:file.methodCompletionItems to:completionItems[@"methods"]];
-                [self _addItemsFrom:file.propertyCompletionItems to:completionItems[@"methods"]];                
-            }
-            [self _addItemsFrom:[_workspace.objcIndex protocolCompletionItems] to:completionItems[@"methods"]];
-            
-            
-            //keywordTemplate.plist
-            if (!_keywordCompletionItemsCache) {
-                NSMutableArray *items = [[NSMutableArray alloc] init];
-                NSArray *symbols = [self _loadKeywordTemplates];
-                for (int i = 0; i < symbols.count; ++i) {
-                    NSDictionary *dict = [symbols objectAtIndex:i];
-                    [items addObject:[[WaxCompletionItem alloc] initWithDictinary:dict]];
-                }
-                _keywordCompletionItemsCache = items;
-            }
-            [self _addItemsFrom:_keywordCompletionItemsCache to:completionItems[@"keywords"]];
-            
-            
-            _allCompletionItemsCache = completionItems;
-        }
-    }
-    
-    return _allCompletionItemsCache;
-}
-
--(NSArray *)_loadKeywordTemplates{
+-(NSArray *)_loadKeywordTemplates {
     NSString * fpath = [[NSBundle bundleForClass:[WaxIndex class]] pathForResource:@"keywordTemplate" ofType:@"plist"];
     NSDictionary *dc = [NSDictionary dictionaryWithContentsOfFile:fpath];
     
@@ -197,7 +165,7 @@
     @synchronized(self) {
         if (_waxFileCache && _waxFileCache[filePath]) {
             WaxFile *file = _waxFileCache[filePath];
-            return file.methodCompletionItems;
+            return nil;
         }
         return nil;
     }
